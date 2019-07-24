@@ -25,6 +25,11 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
+    public Course findCourseById(long id) {
+        return courserepos.findCourseByCourseId(id);
+    }
+
+    @Override
     public ArrayList<CountStudentsInCourses> getCountStudentsInCourse()
     {
         return courserepos.getCountStudentsInCourse();
