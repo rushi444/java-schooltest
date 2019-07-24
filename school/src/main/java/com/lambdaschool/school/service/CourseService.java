@@ -9,6 +9,8 @@ public interface CourseService
 {
     ArrayList<Course> findAll();
 
+    Course save(Course toSave);
+
     Course findCourseById(long id);
 
     ArrayList<CountStudentsInCourses> getCountStudentsInCourse();

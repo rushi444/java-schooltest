@@ -2,6 +2,7 @@ package com.lambdaschool.school.service;
 
 
 import com.lambdaschool.school.SchoolApplication;
+import com.lambdaschool.school.model.Course;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.persistence.EntityNotFoundException;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= SchoolApplication.class)
@@ -59,5 +61,16 @@ public class CourseServiceImplTest {
     @Test
     public void GfindCourseById() {
         assertEquals("Data Science", courseService.findCourseById(1).getCoursename());
+    }
+
+    @Test
+    public void HtestSave() throws Exception {
+        Course newCourse=new Course();
+        newCourse.setCoursename("Python");
+
+        Course added=courseService.save(newCourse);
+        assertNotNull(added);
+        Course found=courseService.findCourseById(added.getCourseid());
+        assertEquals(found.getCoursename(),added.getCoursename());
     }
 }
