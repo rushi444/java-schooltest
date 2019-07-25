@@ -25,11 +25,6 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
-    public Course findCourseById(long id) {
-        return courserepos.findCourseByCourseId(id);
-    }
-
-    @Override
     public ArrayList<CountStudentsInCourses> getCountStudentsInCourse()
     {
         return courserepos.getCountStudentsInCourse();
@@ -50,15 +45,12 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
-    public Course save(Course toSave) {
-        Course checker=new Course();
-        if(toSave.getCoursename()!=""){
-            checker.setCoursename(toSave.getCoursename());
-        }
-        if(toSave.getInstructor()!=null){
-            checker.setInstructor(toSave.getInstructor());
-        }
+    public Course findCourseById(long id) {
+        return courserepos.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
 
-        return courserepos.save(checker);
+    @Override
+    public Course Add(Course course) {
+        return courserepos.save(course);
     }
 }
