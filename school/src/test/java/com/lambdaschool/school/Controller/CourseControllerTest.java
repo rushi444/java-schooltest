@@ -4,13 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lambdaschool.school.controller.CourseController;
 import com.lambdaschool.school.model.Course;
 import com.lambdaschool.school.model.Instructor;
-import com.lambdaschool.school.repository.InstructorRepository;
 import com.lambdaschool.school.service.CourseService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,18 +42,18 @@ public class CourseControllerTest {
     public void setUp() throws Exception {
         courseList = new ArrayList<>();
         Course c1 = new Course();
-        c1.setCoursename("Course 1");
-        c1.setInstructor(new Instructor("Jim Bob"));
+        c1.setCoursename("Python");
+        c1.setInstructor(new Instructor("Ben"));
         courseList.add(c1);
 
         Course c2 = new Course();
-        c2.setCoursename("Course 2");
-        c2.setInstructor(new Instructor("Joe Jimmy"));
+        c2.setCoursename("C++");
+        c2.setInstructor(new Instructor("Drew"));
         courseList.add(c2);
 
         Course c3 = new Course();
-        c3.setCoursename("Course 3");
-        c3.setInstructor(new Instructor("Jimmothy Bobertson"));
+        c3.setCoursename("Objective C");
+        c3.setInstructor(new Instructor("Max"));
         courseList.add(c3);
 
     }
@@ -70,8 +67,8 @@ public class CourseControllerTest {
         String apiUrl = "/courses/course/add";
         Course newCourse = new Course();
         newCourse.setCourseid(10);
-        newCourse.setCoursename("Turkey");
-        newCourse.setInstructor(new Instructor("Johnathonson Hemmingstonwaymeir"));
+        newCourse.setCoursename("Rust");
+        newCourse.setInstructor(new Instructor("Rushi"));
 
         Mockito.when(courseService.Add(newCourse)).thenReturn(((Course)newCourse));
 

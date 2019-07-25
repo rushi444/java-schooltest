@@ -3,7 +3,6 @@ package com.lambdaschool.school.service;
 
 import com.lambdaschool.school.SchoolApplication;
 import com.lambdaschool.school.model.Course;
-import com.lambdaschool.school.model.Instructor;
 import com.lambdaschool.school.repository.InstructorRepository;
 import org.junit.After;
 import org.junit.Before;
